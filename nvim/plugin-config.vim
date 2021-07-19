@@ -52,11 +52,9 @@ autocmd FileType nerdtree setlocal relativenumber
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" ultiSnips
-"let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
+"nmap <leader>gs :G<CR>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -83,9 +81,6 @@ autocmd FileType scss setl iskeyword+=@-@
 " coc-emmet coc-sql coc-python coc-go coc-css coc-docker
 
 let g:coc_global_extensions = [
-  "\ 'coc-eslint',
-  "\ 'coc-prettier',
-  "\ 'coc-json',
   \ 'coc-snippets'
   \ ]
 

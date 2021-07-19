@@ -28,7 +28,7 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " IDE
 Plug 'neoclide/coc.nvim', {'branch':'release'}
-Plug 'lilydjwg/colorizer'
+"Plug 'lilydjwg/colorizer'
 "Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ddollar/nerdcommenter'
