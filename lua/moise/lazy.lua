@@ -18,9 +18,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- lista de plugins. vacía por ahora, se llena en la próxima fase
-  -- (lazy.nvim exige la clave `spec` para reconocer esto como config)
-  spec = {},
+  -- categorías de plugins: cada una es un módulo que devuelve specs
+  spec = {
+    { import = "moise.plugins.extras" },
+    -- pendientes de crear:
+    -- { import = "moise.plugins.ui" },
+    -- { import = "moise.plugins.git" },
+    -- { import = "moise.plugins.sintax" },
+    -- { import = "moise.plugins.cmp" },
+    -- { import = "moise.plugins.lsp" },
+  },
   default = {
     lazy = true,
     version = false
