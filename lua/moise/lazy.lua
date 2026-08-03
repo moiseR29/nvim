@@ -24,10 +24,11 @@ require("lazy").setup({
     { import = "moise.plugins.ui" },
     -- pendientes de crear:
     -- { import = "moise.plugins.ui" },
-    -- { import = "moise.plugins.git" },
-    -- { import = "moise.plugins.sintax" },
-    -- { import = "moise.plugins.cmp" },
-    -- { import = "moise.plugins.lsp" },
+    { import = "moise.plugins.git" },
+    { import = "moise.plugins.syntax" },
+    { import = "moise.plugins.cmp" },
+    { import = "moise.plugins.lsp" },
+    -- pendientes:
   },
   default = {
     lazy = true,
