@@ -1,0 +1,20 @@
+return {
+      enabled = true,
+      preset = {
+        header = [[
+    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+        keys = {
+          { icon = "  ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+          { icon = "  ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
+          { icon = "  ", key = "g", desc = "Find Word", action = ":lua Snacks.picker.grep()" },
+          { icon = "  ", key = "m", desc = "Bookmarks", action = ":lua Snacks.picker.marks()" },
+          { icon = "  ", key = "t", desc = "Themes", action = ":lua Snacks.picker.colorschemes()" },
+          { icon = "  ", key = "s", desc = "Settings", action = ":e $MYVIMRC" },
+        },
+      }
+    }

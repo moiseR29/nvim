@@ -21,6 +21,7 @@ require("lazy").setup({
   -- categorías de plugins: cada una es un módulo que devuelve specs
   spec = {
     { import = "moise.plugins.extras" },
+    { import = "moise.plugins.ui" },
     -- pendientes de crear:
     -- { import = "moise.plugins.ui" },
     -- { import = "moise.plugins.git" },

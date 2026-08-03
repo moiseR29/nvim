@@ -75,6 +75,10 @@ local options = {
   -- al inicio de la línea, <Tab> usa shiftwidth en vez de softtabstop/tabstop
   smarttab = true,
 
+  -- los splits verticales nuevos se abren a la derecha (el archivo actual
+  -- queda a la izquierda). Lo usa snacks (<C-v> en el explorer/pickers) y :vsplit
+  splitright = true,
+
   -- ms que espera una secuencia de teclas incompleta (p.ej. <leader> + prefijo)
   --timeoutlen = 400,
 
