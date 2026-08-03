@@ -59,6 +59,17 @@ return {
           severity_sort = true,
         })
 
+        -- subrayado ondulado (squiggly) como VSCode, con color por severidad
+        local diag_undercurl = {
+          Error = "#f14c4c",
+          Warn = "#cca700",
+          Info = "#4fc1ff",
+          Hint = "#6ce15e",
+        }
+        for kind, color in pairs(diag_undercurl) do
+          vim.api.nvim_set_hl(0, "DiagnosticUnderline" .. kind, { undercurl = true, sp = color })
+        end
+
         opts.desc = "Buffer diagnostics"
         keymap.set("n", "<leader>tsd", function() Snacks.picker.diagnostics() end, opts)
         --u.buf_keymap(bufnr, "n", "<leader>vsd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>")
@@ -66,13 +77,15 @@ return {
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 
-        require("lsp_signature").on_attach(ev.buf, {
+        -- on_attach(cfg, bufnr): cfg primero, bufnr segundo (ev.buf = el buffer
+        -- al que se attachó el cliente LSP)
+        require("lsp_signature").on_attach({
           hint_enable = false,
           hi_parameter = "QuickFixLine",
           handler_opts = {
             border = vim.g.floating_window_border,
           },
-        })
+        }, ev.buf)
       end,
     })
 
@@ -85,6 +98,10 @@ return {
     end
 
     mason_lspconfig.setup {
+      -- eslint-lsp NO se auto-habilita: eslint lo maneja none-ls (source de
+      -- extras, gated por config en el repo). Sin esto, eslint-lsp se attacha
+      -- a todos los js/ts y duplica los diagnósticos.
+      automatic_enable = { exclude = { "eslint" } },
       handlers = {
         -- TODO: default handlers for installed servers
         function(server_name)

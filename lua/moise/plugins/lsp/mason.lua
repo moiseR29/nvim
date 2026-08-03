@@ -34,6 +34,11 @@ return {
         "bashls",
         "docker_compose_language_service",
       },
+      -- eslint-lsp NO se auto-habilita: eslint lo maneja none-ls (source de
+      -- extras, gated por config). Este setup corre PRIMERO (mason se carga
+      -- antes que lspconfig), así que sin esto eslint-lsp se habilita y
+      -- duplica los diagnósticos.
+      automatic_enable = { exclude = { "eslint" } },
     }
 
     mason_tool_installer.setup {
@@ -67,7 +72,6 @@ return {
         "yamllint",
 
         -- Terraform
-        "terraform_fmt",
         "tflint",
 
       },

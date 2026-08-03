@@ -1,5 +1,7 @@
 # Neovim Configuration (moise)
 
+[Español](README.es.md)
+
 A modern, fast Neovim configuration for day-to-day development: full LSP support,
 snippet-powered completion, and a polished UI — all lazy-loaded.
 
@@ -63,7 +65,7 @@ and just skips that tool.
 | Node.js + npm | `ts_ls`, `prettier`, `eslint`, `pyright` |
 | Go | `gopls`, `golangci-lint`, `stylua` |
 | Python + pip | `black`, `pylint` |
-| Terraform | `terraform_fmt`, `tflint` |
+| Terraform | `terraform` (fmt), `tflint` |
 
 ## LSP servers & tools
 
@@ -74,7 +76,7 @@ mason-tool-installer installs these automatically on first run:
 `docker_compose_language_service`.
 
 **Formatters & linters:** `prettier`, `eslint`, `stylua`, `black`, `pylint`,
-`golangci-lint`, `yamllint`, `terraform_fmt`, `tflint`.
+`golangci-lint`, `yamllint`, `tflint`.
 
 ## Linting & formatting — repo-aware
 
@@ -93,10 +95,11 @@ repo never produces unwanted diffs or noise.
 The config walks up the directory tree from your current file, so repo-root
 configs are found from any subdirectory.
 
-- **Lint on save** — runs on `BufWritePost` / `InsertLeave` when a config exists.
-- **Format on save** — via conform; `lsp_fallback` is disabled so the LSP never
-  reformats a repo that didn't configure formatting.
-- **Manual triggers always work** — `<leader>tl` (lint), `<leader>mp` (format).
+- **Lint on save** — none-ls updates diagnostics automatically (native LSP
+  diagnostics, shown in trouble and the sign column).
+- **Format on save** — none-ls formats on `BufWritePre` (only its own client,
+  never the language server).
+- **Manual format** — `<leader>mp` formats with none-ls anytime.
 
 ## Keymaps
 
@@ -175,9 +178,8 @@ configs are found from any subdirectory.
 
 | Key | Action |
 |---|---|
-| `<leader>mp` | Format file / range (conform) |
+| `<leader>mp` | Format file / range (none-ls) |
 | `<leader>vf` | Format (LSP) |
-| `<leader>tl` | Lint file |
 
 ### Terminal
 
@@ -236,8 +238,8 @@ side), `<C-s>` horizontal split, `<C-t>` new tab.
 | nvim-lspconfig | `1c0d8f7` |
 | neodev.nvim | `46aa467` |
 | lsp_signature.nvim | `b7ace9d` |
-| nvim-lint | `a219b2c` |
-| conform.nvim | `619363c` |
+| none-ls.nvim | `01f8e62` |
+| none-ls-extras.nvim | `9a8b8a9` |
 | trouble.nvim | `bd67efe` |
 
 ### Editing
@@ -276,7 +278,7 @@ lua/moise/
     git/                   vim-fugitive, gitsigns
     syntax/                nvim-autopairs, Comment, vim-illuminate, todo-comments
     cmp/                   nvim-cmp + sources, LuaSnip, lspkind, friendly-snippets
-    lsp/                   mason, lspconfig, nvim-lint, conform
+    lsp/                   mason, lspconfig, none-ls
     ui/                    snacks, lualine, bufferline, toggleterm, colorscheme, treesitter, trouble
     config/
       snacks/              per-module snacks options (required explicitly, never imported by lazy)
