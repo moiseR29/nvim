@@ -34,7 +34,7 @@ return {
         opts.desc = "Show LSP implementations"
         keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
         opts.desc = "LSP code actions"
-        keymap.set({"n", "v"}, "<leader>vca", vim.lsp.buf.code_action, opts)
+        keymap.set({ "n", "v" }, "<leader>vca", vim.lsp.buf.code_action, opts)
 
         -- keymap.set("n", "<leader>vn", ':lua vim.lsp.diagnostic.goto_next({ border = "rounded" })<cr>')
         -- keymap.set("n", "<leader>vp", ':lua vim.lsp.diagnostic.goto_prev({ border = "rounded" })<cr>')
@@ -49,7 +49,7 @@ return {
         -- vim.o.updatetime = 200
         -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false })]])
 
-        vim.diagnostic.config({
+        vim.diagnostic.config {
           virtual_text = {
             prefix = "●",
           },
@@ -57,7 +57,7 @@ return {
           underline = true,
           update_in_insert = false,
           severity_sort = true,
-        })
+        }
 
         -- subrayado ondulado (squiggly) como VSCode, con color por severidad
         local diag_undercurl = {
@@ -71,8 +71,9 @@ return {
         end
 
         opts.desc = "Buffer diagnostics"
-        keymap.set("n", "<leader>tsd", function() Snacks.picker.diagnostics() end, opts)
-        --u.buf_keymap(bufnr, "n", "<leader>vsd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>")
+        keymap.set("n", "<leader>tsd", function()
+          Snacks.picker.diagnostics()
+        end, opts)
 
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
@@ -135,8 +136,7 @@ return {
         ["yamlls"] = function()
           require("moise.plugins.config.lsp.yamlls").setup(lspconfig, capabilities)
         end,
-
-      }
+      },
     }
   end,
 }

@@ -5,7 +5,8 @@
     "lua/?/init.lua"
   ],
   "diagnostics.globals": [
-    "vim"
+    "vim",
+    "Snacks"
   ],
   "diagnostics.disable": [
     "redundant-parameter"
