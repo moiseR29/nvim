@@ -1,5 +1,5 @@
 return {
   "RRethy/vim-illuminate",
-  -- event = { "BufReadPre", "BufNewFile" },
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
+  --event = "VeryLazy",
 }

@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
   opts = {
     signs = {
       add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
@@ -10,7 +10,7 @@ return {
       changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
     },
     -- rendimiento - antes true
-    current_line_blame = false,
+    current_line_blame = true,
     on_attach = function (bufnr)
       local gitsigns = require("gitsigns")
       vim.keymap.set("n", "<leader>gsp", gitsigns.preview_hunk, { buffer = bufnr })
