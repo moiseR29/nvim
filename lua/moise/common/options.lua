@@ -28,7 +28,7 @@ local options = {
   -- complementa: si activás smartcase, respeta el case cuando el patrón contiene mayúsculas
   ignorecase = true,
 
--- respeta mayúsculas si el patrón las tiene (requiere ignorecase)
+  -- respeta mayúsculas si el patrón las tiene (requiere ignorecase)
   smartcase = true,
 
   -- habilita el mouse en todos los modos (a = all)
@@ -80,46 +80,17 @@ local options = {
   splitright = true,
 
   -- ms que espera una secuencia de teclas incompleta (p.ej. <leader> + prefijo)
-  --timeoutlen = 400,
+  timeoutlen = 400,
 
   -- ms entre ticks: gatilla CursorHold, autosave, etc.
-  --updatetime = 250,
-
-  --errorbells = false, -- REVIEW
-  --backup = false, -- REVIEW
+  updatetime = 250,
 
   -- menú de autocompletado (<C-n>/<C-p>)
   -- menuone: mostrar el menú aunque haya una sola opción
   -- noselect: no seleccionar el primer ítem, solo resaltarlo (Enter inserta la opción)
   completeopt = { "menuone", "noselect" },
-
-  -- preview: muestra la doc del ítem seleccionado (puede molestar con LSP)
-  --completeopt = { "menu", "menuone", "noselect", "preview" }, 
 }
 
 for k, v in pairs(options) do
   u.addOpt(k, v)
 end
-
--- auto cmd
---vim.cmd [[syntax enable]]
---vim.cmd [[filetype plugin indent on]]
---
---vim.opt.list = true
---vim.opt.listchars = {
---  space = "⋅",
---  eol = " ", --"↴",
---  tab = "▎_",
---  -- tab = "|_>",
---  trail = "•",
---  extends = "❯",
---  precedes = "❮",
---  nbsp = "",
---}
---vim.opt.fillchars = {
---  fold = " ",
---  foldsep = " ",
---  foldopen = "",
---  foldclose = "",
---  diff = "╱",
---}

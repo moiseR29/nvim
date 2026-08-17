@@ -6,20 +6,25 @@ return {
   version = "*",
   lazy = false, -- tiene que estar listo al arranque (la tabline se ve siempre)
   dependencies = {
-    "akinsho/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     require("bufferline").setup({
       options = {
+        mode = "buffers",
+        diagnostics = "nvim_lsp",
         show_buffer_close_icons = true,
         show_buffer_default_name = true,
         -- no cierra buffers al saltar entre ellos (default true es molesto)
         close_on_jump = false,
-        separator_style = { "", "" },
+        separator_style = "slant",
         always_show_bufferline = true,
-        -- marcado visual del buffer modificado (más visible que el título)
-        modified_icon = "●",
-        buffer_close_icon = "x",
+        offsets = {
+          filetype = "snacks_picker_list",
+          text = "Explorer",
+          highlight = "Directory",
+          separator = true
+        }
       },
     })
   end,

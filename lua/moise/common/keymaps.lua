@@ -50,6 +50,14 @@ u.keymap("n", "<leader>h", ":tabp<CR>")
 -- <leader>w: guarda el archivo actual
 u.keymap("n", "<leader>w", ":w<CR>")
 
+u.keymap("", "<C-s>", "<Nop>")
+-- <leader>w: guarda el archivo actual
+u.keymap("n", "<C-s>", ":w<CR>")
+-- <leader>w: guarda el archivo actual
+u.keymap("i", "<C-s>", ":w<CR>")
+-- <leader>w: guarda el archivo actual
+u.keymap("v", "<C-s>", ":w<CR>")
+
 -- <A-j>/<A-k> en normal: mover la línea actual hacia abajo/arriba
 u.keymap("n", "<A-j>", ":m .+1<CR>==")
 u.keymap("n", "<A-k>", ":m .-2<CR>==")
@@ -59,11 +67,3 @@ u.keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 -- <A-j>/<A-k> en visual: mueve solo las líneas seleccionadas y conserva la selección
 u.keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
 u.keymap("v", "<A-k>", ":m '<-2<CR>gv=gv")
-
--- (dead code, pendiente de decidir: cerrar/guardar y salir)
---u.keymap("n", "<leader>qq", ":q!<CR>")
---u.keymap("n", "<leader>wq", ":wq!<CR>")
-
--- (dead code, terminal: pendiente de decidir)
---u.keymap("t", "<Esc><Esc>", "<C-\\><C-n>")
---u.keymap("n", "<leader>t", ":belowright terminal<CR>")

@@ -8,6 +8,7 @@ return {
   opts = {
     options = {
       theme = "codedark",
+      globalstatus = true
     },
     sections = {
       lualine_a = { { "mode", upper = true } },

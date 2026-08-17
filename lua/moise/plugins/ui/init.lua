@@ -11,4 +11,5 @@ return {
   { import = "moise.plugins.ui.colorscheme" },
   { import = "moise.plugins.ui.treesitter" },
   { import = "moise.plugins.ui.trouble" },
+  { import = "moise.plugins.ui.render-markdown" },
 }
