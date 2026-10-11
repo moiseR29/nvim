@@ -14,6 +14,7 @@ return {
       follow_file = true, -- sigue el archivo del buffer actual (update_focused_file de nvim-tree)
       git_status = true, -- iconos de git (git.enable = true de nvim-tree)
       git_untracked = true, -- mostrar archivos untracked
+      auto_close = true,
     },
   },
 }

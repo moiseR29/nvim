@@ -17,7 +17,7 @@ return {
   },
   config = function()
     local none_ls = require "null-ls"
-    local command_resolver = require("null-ls.helpers.command_resolver")
+    local command_resolver = require "null-ls.helpers.command_resolver"
 
     -- Buscar un archivo de config subiendo desde el directorio del buffer,
     -- tal como prettier/eslint resuelven SU config. root_has_file de none-ls
@@ -55,11 +55,22 @@ return {
           -- TODOS los nombres válidos de config de prettier (v2 y v3), buscados
           -- hacia arriba desde el buffer (monorepo-safe).
           return find_up(
-            ".prettierrc", ".prettierrc.json", ".prettierrc.json5", ".prettierrc.yml",
-            ".prettierrc.yaml", ".prettierrc.js", ".prettierrc.cjs", ".prettierrc.mjs",
-            ".prettierrc.toml", "prettier.config.js", "prettier.config.cjs",
-            "prettier.config.mjs", "prettier.config.mts", "prettier.config.ts",
-            "package.json", ".editorconfig"
+            ".prettierrc",
+            ".prettierrc.json",
+            ".prettierrc.json5",
+            ".prettierrc.yml",
+            ".prettierrc.yaml",
+            ".prettierrc.js",
+            ".prettierrc.cjs",
+            ".prettierrc.mjs",
+            ".prettierrc.toml",
+            "prettier.config.js",
+            "prettier.config.cjs",
+            "prettier.config.mjs",
+            "prettier.config.mts",
+            "prettier.config.ts",
+            "package.json",
+            ".editorconfig"
           )
         end,
       },
@@ -75,26 +86,27 @@ return {
       },
       none_ls.builtins.formatting.gofmt.with {
         condition = function(utils)
-          return utils.root_has_file("go.mod")
+          return utils.root_has_file "go.mod"
         end,
       },
       none_ls.builtins.formatting.goimports.with {
         condition = function(utils)
-          return utils.root_has_file("go.mod")
+          return utils.root_has_file "go.mod"
         end,
       },
       -- Diagnóstico
-      none_ls.builtins.diagnostics.pylint.with {
-        condition = function(utils)
-          return utils.root_has_file("pyproject.toml", "setup.cfg", ".pylintrc", "Pipfile")
-        end,
-      },
-      none_ls.builtins.diagnostics.golangci_lint.with {
-        condition = function(utils)
-          return utils.root_has_file(".golangci.yml", ".golangci.yaml")
-        end,
-      },
+      --none_ls.builtins.diagnostics.pylint.with {
+      --  condition = function(utils)
+      --    return utils.root_has_file("pyproject.toml", "setup.cfg", ".pylintrc", "Pipfile")
+      --  end,
+      --},
+      --none_ls.builtins.diagnostics.golangci_lint.with {
+      --  condition = function(utils)
+      --    return utils.root_has_file(".golangci.yml", ".golangci.yaml")
+      --  end,
+      --},
       -- eslint (source de none-ls-extras): solo si el repo tiene config
+      --
       --require("none-ls.diagnostics.eslint").with {
       --  --prefer_local = "node_modules/.bin",
       --  -- preferir el binario local del proyecto (node_modules/.bin), fallback al global
